@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    {% if customer_form %}
+
+    <h1>Enterprise Add Customer Form</h1>
+
+    <div>
+        <button><a href="{% url 'allcustomers' %}">Back</a></button>
+    </div>
+
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ customer_form }}
+            <button type="submit">Add Customer</button>
+        </form>
+    </div>
+
+    {% else %}
+
+    <h1>Enterprise Edit Customer Form</h1>
+
+    <div>
+        <button><a href="{% url 'allcustomers' %}">Back</a></button>
+    </div>
+
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ edit_customer_form }}
+            <button type="submit">Edit Customer</button>
+        </form>
+    </div>
+
+    {% endif %}
+</body>
+
+
+
+</html>

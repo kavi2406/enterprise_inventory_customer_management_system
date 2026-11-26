@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer List</title>
+</head>
+
+<body>
+    <h1>All Customers List Page</h1>
+    <div>
+        <button><a href=" {% url 'addcustomer' %} ">Add Customer</a></button>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <th>Customer Name</th>
+                <th>Customer Since</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            {% for customer in customers %}
+            <tr>
+                <td>{{customer.customer_name}}</td>
+                <td>{{customer.customer_since}}</td>
+                <td><a href="{% url 'updatecustomer' customer.id %}">Update</a></td>
+                <td><a href="{% url 'deletecustomer' customer.id %}">Remove</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>
